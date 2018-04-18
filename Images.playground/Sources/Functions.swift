@@ -35,7 +35,7 @@ func divide(by scalar: CGFloat?) -> (CGSize) -> CGSize {
     }
 }
 
-func multiply(by scalar: CGFloat?) -> (CGPoint) -> CGPoint {
+public func multiply(by scalar: CGFloat?) -> (CGPoint) -> CGPoint {
     return {
         (
             $0.x * (scalar ?? 1),
@@ -44,7 +44,7 @@ func multiply(by scalar: CGFloat?) -> (CGPoint) -> CGPoint {
     }
 }
 
-func offset(by distance: CGPoint?) -> (CGPoint) -> CGPoint {
+public func offset(by distance: CGPoint?) -> (CGPoint) -> CGPoint {
     return {
         (
             $0.x + (distance?.x ?? 0),
