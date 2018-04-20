@@ -10,39 +10,39 @@ class ViewController : UIViewController {
         images.append(( "Original", original ))
         
         var zoomLevel: CGFloat = 1.5
-        var contentOffset = CGPoint(x: -225, y: -435)
+        var centerOffset = CGPoint(x: -225, y: -435)
         
         images.append((
             "\(zoomLevel)x Zoom",
-            original.imageByCropping(withZoom: zoomLevel, offset: contentOffset)
+            original.imageByCropping(withZoom: zoomLevel, offset: centerOffset)
         ))
         
         zoomLevel = zoomLevel * 2
         contentOffset = contentOffset |> multiply(by: 2)
-        
+
         images.append((
             "\(zoomLevel)x Zoom",
             original.imageByCropping(withZoom: zoomLevel, offset: contentOffset)
         ))
-        
+
         zoomLevel = zoomLevel * 2
         contentOffset = contentOffset |> multiply(by: 2)
-        
+
         images.append((
             "\(zoomLevel)x Zoom",
             original.imageByCropping(withZoom: zoomLevel, offset: contentOffset)
         ))
-        
+
         zoomLevel = zoomLevel * 2
         contentOffset = contentOffset |> multiply(by: 2)
-        
+
         images.append((
             "\(zoomLevel)x Zoom",
             original.imageByCropping(withZoom: zoomLevel, offset: contentOffset)
         ))
-        
+
         let arbitraryFrame = CGRect(origin: CGPoint(x: 1000, y: 100), size: CGSize(width: 100, height: 820))
-        
+
         images.append((
             "Arbitrary Crop",
             original.imageByCropping(toFrame: arbitraryFrame)

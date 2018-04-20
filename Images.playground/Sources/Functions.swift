@@ -8,7 +8,25 @@
 
 import UIKit
 
-func subtract(_ size: CGSize) -> (CGSize) -> CGSize {
+public func add(_ point: CGPoint) -> (CGPoint) -> CGPoint {
+    return {
+        (
+            $0.x + point.x,
+            $0.y + point.y
+            ) |> CGPoint.init
+    }
+}
+
+public func subtract(_ point: CGPoint) -> (CGPoint) -> CGPoint {
+    return {
+        (
+            $0.x - point.x,
+            $0.y - point.y
+            ) |> CGPoint.init
+    }
+}
+
+public func subtract(_ size: CGSize) -> (CGSize) -> CGSize {
     return {
         (
             $0.width - size.width,
@@ -17,7 +35,7 @@ func subtract(_ size: CGSize) -> (CGSize) -> CGSize {
     }
 }
 
-func multiply(by scalar: CGFloat?) -> (CGSize) -> CGSize {
+public func multiply(by scalar: CGFloat?) -> (CGSize) -> CGSize {
     return {
         (
             $0.width * (scalar ?? 1),
@@ -26,7 +44,35 @@ func multiply(by scalar: CGFloat?) -> (CGSize) -> CGSize {
     }
 }
 
-func divide(by scalar: CGFloat?) -> (CGSize) -> CGSize {
+public func floor() -> (CGPoint) -> CGPoint {
+    return {
+        (
+            floor($0.x),
+            floor($0.y)
+            ) |> CGPoint.init
+    }
+}
+
+
+public func multiply(by size: CGSize?) -> (CGPoint) -> CGPoint {
+    return {
+        (
+            $0.x * (size?.width ?? 1),
+            $0.y * (size?.height ?? 1)
+            ) |> CGPoint.init
+    }
+}
+
+public func multiply(by point: CGPoint?) -> (CGPoint) -> CGPoint {
+    return {
+        (
+            $0.x * (point?.x ?? 1),
+            $0.y * (point?.y ?? 1)
+            ) |> CGPoint.init
+    }
+}
+
+public func divide(by scalar: CGFloat?) -> (CGSize) -> CGSize {
     return {
         (
             $0.width / (scalar ?? 1),
@@ -44,6 +90,16 @@ public func multiply(by scalar: CGFloat?) -> (CGPoint) -> CGPoint {
     }
 }
 
+public func divide(by scalar: CGFloat?) -> (CGPoint) -> CGPoint {
+    return {
+        (
+            $0.x / (scalar ?? 1),
+            $0.y / (scalar ?? 1)
+            ) |> CGPoint.init
+    }
+}
+
+
 public func offset(by distance: CGPoint?) -> (CGPoint) -> CGPoint {
     return {
         (
@@ -53,9 +109,37 @@ public func offset(by distance: CGPoint?) -> (CGPoint) -> CGPoint {
     }
 }
 
+public func divide(by: CGPoint) -> (CGPoint) -> CGPoint {
+    return  {
+        (
+            $0.x / by.x,
+            $0.y / by.y
+            ) |> CGPoint.init
+    }
+}
+
+public func divide(by: CGSize) -> (CGPoint) -> CGPoint {
+    return  {
+        (
+            $0.x / by.width,
+            $0.y / by.height
+            ) |> CGPoint.init
+    }
+}
+
+
 func invert() -> (CGSize) -> CGSize {
     return {
         $0 |> multiply(by: -1)
+    }
+}
+
+func invertY() -> (CGPoint) -> CGPoint {
+    return {
+        (
+            $0.x,
+            $0.y * -1
+            ) |> CGPoint.init
     }
 }
 
@@ -82,7 +166,7 @@ func zoom(by scalar: CGFloat?) -> (CGRect) -> CGRect {
                 |> CGPoint.init,
             $0.size
                 |> multiply(by: scalar)
-        ) |> CGRect.init
+            ) |> CGRect.init
     }
 }
 

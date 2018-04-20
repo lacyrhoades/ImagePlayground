@@ -10,7 +10,8 @@ import UIKit
 
 extension UIImage {
     public func imageByCropping(withZoom z: CGFloat, offset o: CGPoint) -> UIImage {
-        return self.size |> CGRect.init |> zoom(by: z) |> offset(by: o) |> self.draw(withSize: self.size)
+        let origin = o |> invert()
+        return self.size |> CGRect.init |> zoom(by: z) |> offset(by: origin) |> self.draw(withSize: self.size)
     }
     
     public func imageByCropping(toFrame cropFrame: CGRect) -> UIImage {

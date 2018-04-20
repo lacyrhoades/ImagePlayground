@@ -9,13 +9,24 @@
 import UIKit
 
 extension CGPoint {
-    init(size: CGSize) {
+    public init(size: CGSize) {
         self.init(x: size.width, y: size.height)
+    }
+    
+    public init(_ float: CGFloat) {
+        self.init(x: float, y: float)
+    }
+    
+    public static var one: CGPoint {
+        return CGPoint(x: 1, y: 1)
+    }
+    public static var half: CGPoint {
+        return CGPoint(x: 0.5, y: 0.5)
     }
 }
 
 extension CGRect {
-    init(size: CGSize) {
+    public init(size: CGSize) {
         self.init(origin: .zero, size: size)
     }
 }
