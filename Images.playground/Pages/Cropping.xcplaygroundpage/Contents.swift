@@ -18,27 +18,27 @@ class ViewController : UIViewController {
         ))
         
         zoomLevel = zoomLevel * 2
-        contentOffset = contentOffset |> multiply(by: 2)
+        centerOffset = centerOffset |> multiply(by: 2)
 
         images.append((
             "\(zoomLevel)x Zoom",
-            original.imageByCropping(withZoom: zoomLevel, offset: contentOffset)
+            original.imageByCropping(withZoom: zoomLevel, offset: centerOffset)
         ))
 
         zoomLevel = zoomLevel * 2
-        contentOffset = contentOffset |> multiply(by: 2)
+        centerOffset = centerOffset |> multiply(by: 2)
 
         images.append((
             "\(zoomLevel)x Zoom",
-            original.imageByCropping(withZoom: zoomLevel, offset: contentOffset)
+            original.imageByCropping(withZoom: zoomLevel, offset: centerOffset)
         ))
 
         zoomLevel = zoomLevel * 2
-        contentOffset = contentOffset |> multiply(by: 2)
+        centerOffset = centerOffset |> multiply(by: 2)
 
         images.append((
             "\(zoomLevel)x Zoom",
-            original.imageByCropping(withZoom: zoomLevel, offset: contentOffset)
+            original.imageByCropping(withZoom: zoomLevel, offset: centerOffset)
         ))
 
         let arbitraryFrame = CGRect(origin: CGPoint(x: 1000, y: 100), size: CGSize(width: 100, height: 820))
