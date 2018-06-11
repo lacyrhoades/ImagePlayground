@@ -1,0 +1,5 @@
+use_frameworks!
+
+target 'PopArt' do
+pod 'GPUImage'
+end

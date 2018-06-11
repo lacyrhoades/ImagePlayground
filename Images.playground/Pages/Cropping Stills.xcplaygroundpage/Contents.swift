@@ -10,7 +10,7 @@ class ViewController : UIViewController {
         images.append(( "Original", original ))
         
         var zoomLevel: CGFloat = 1.5
-        var centerOffset = CGPoint(x: -225, y: -435)
+        var centerOffset = CGPoint(x: 225, y: 435)
         
         images.append((
             "\(zoomLevel)x Zoom",
